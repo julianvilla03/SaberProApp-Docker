@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listado de Alumnos</title>
+    <style>
+        body {
+            background-color: #eef2f3;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 90%;
+            background: white;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        a.btn, a.btn-delete {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        a.btn {
+            background-color: #28a745;
+        }
+        a.btn-delete {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <h2>Lista de Alumnos Saber Pro</h2>
+    <a class="btn" th:href="@{/nuevo}">Agregar Alumno</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Documento</th>
+                <th>Programa</th>
+                <th>Puntaje</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="alumno : ${alumnos}">
+                <td th:text="${alumno.nombre}"></td>
+                <td th:text="${alumno.documento}"></td>
+                <td th:text="${alumno.programa}"></td>
+                <td th:text="${alumno.puntaje}"></td>
+                <td>
+                    <a th:href="@{'/editar/' + ${alumno.id}}" class="btn">Editar</a>
+                    <a th:href="@{'/eliminar/' + ${alumno.id}}" class="btn-delete">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
