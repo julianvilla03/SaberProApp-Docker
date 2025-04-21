@@ -3,6 +3,6 @@ services:
     name: saberproapp
     env: java
     plan: free
-    branch: main
-    buildCommand: ./mvnw clean install
-    startCommand: java -jar target/*.jar
+    branch: master
+    buildCommand: "./mvnw clean install"
+    startCommand: "java -jar target/*.jar"
